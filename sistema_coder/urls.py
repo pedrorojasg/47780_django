@@ -17,7 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+<<<<<<< HEAD
 from sistema_coder.views import *
+=======
+from sistema_coder.views import saludar, saludar_con_fecha, saludar_con_html
+>>>>>>> da534dbedf64bec2106f7ea8024520e1114b9cd5
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,5 +30,9 @@ urlpatterns = [
     # La RUTA de la URL puede ser diferente al nombre de la view
     path("hello/", saludar),
     path("saludar-fecha/", saludar_con_fecha),
+<<<<<<< HEAD
     path ("saludo-html",saludar_con_html),
+=======
+    path("saludo-html/", saludar_con_html),
+>>>>>>> da534dbedf64bec2106f7ea8024520e1114b9cd5
 ]
