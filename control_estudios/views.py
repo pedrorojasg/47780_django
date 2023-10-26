@@ -12,7 +12,7 @@ def listar_estudiantes(request):
     }
     http_response = render(
         request=request,
-        template_name='lista_estudiantes.html',
+        template_name='control_estudios/lista_estudiantes.html',
         context=contexto,
     )
     return http_response
