@@ -17,16 +17,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-
 from sistema_coder.views import saludar, saludar_con_fecha, saludar_con_html
 
-
+# Son las URLS generales del proyecto
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path("admin/", admin.site.urls),
+    path("estudios/", include("control_estudios.urls")),
+
     # Aqui agregar mis URLS
     # path(RUTA, VIEW)
     # La RUTA de la URL puede ser diferente al nombre de la view
-    path("hello/", saludar),
-    path("saludar-fecha/", saludar_con_fecha),
-    path("saludo-html/", saludar_con_html),
+    # path("hello/", saludar),
+    # path("saludar-fecha/", saludar_con_fecha),
+    # path("saludo-html/", saludar_con_html),
 ]
