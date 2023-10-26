@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path
 
 from sistema_coder.views import saludar, saludar_con_fecha, saludar_con_html
+from control_estudios.views import listar_estudiantes
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,4 +28,5 @@ urlpatterns = [
     path("hello/", saludar),
     path("saludar-fecha/", saludar_con_fecha),
     path("saludo-html/", saludar_con_html),
+    path("estudiantes/", listar_estudiantes),
 ]
