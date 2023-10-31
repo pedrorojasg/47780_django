@@ -4,5 +4,5 @@ from control_estudios.views import listar_estudiantes
 
 # Son las URLS de la app control_estudios
 urlpatterns = [
-    path("estudiantes/", listar_estudiantes),
+    path("estudiantes/", listar_estudiantes, name="lista_estudiantes"),
 ]
