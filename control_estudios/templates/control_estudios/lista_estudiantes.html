@@ -14,10 +14,10 @@
 {% for estudiante in estudiantes %}
   <li>
     {{ estudiante.apellido }}, {{ estudiante.nombre }}
-    {% if estudiante.nota >= 5 %}
-      APROBADO
-    {% else %}
+    {% if estudiante.nota < 5 %}
       REPROBADO
+    {% else %}
+      APROBADO
     {% endif %}
   </li>
 {% endfor %}
