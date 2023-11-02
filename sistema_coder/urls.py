@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from sistema_coder.views import saludar, saludar_con_fecha, saludar_con_html
+from sistema_coder.views import saludar_con_html
 from control_estudios.views import listar_estudiantes
 
 # Son las URLS generales del proyecto
