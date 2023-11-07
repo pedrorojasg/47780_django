@@ -115,3 +115,33 @@ def eliminar_curso(request, id):
         # redireccionamos a la URL exitosa
         url_exitosa = reverse('lista_cursos')
         return redirect(url_exitosa)
+
+
+def editar_curso(request, id):
+    curso = Curso.objects.get(id=id)
+    if request.method == "POST":
+        # Actualizacion de datos
+        formulario = CursoFormulario(request.POST)
+
+        if formulario.is_valid():
+            data = formulario.cleaned_data
+            # modificamos el objeto en memoria RAM
+            curso.nombre = data['nombre']
+            curso.comision = data['comision']
+            # Los cambios se guardan en la Base de datos
+            curso.save()
+
+            url_exitosa = reverse('lista_cursos')
+            return redirect(url_exitosa)
+    else:  # GET
+        # Descargar formulario con data actual
+        inicial = {
+            'nombre': curso.nombre,
+            'comision': curso.comision,
+        }
+        formulario = CursoFormulario(initial=inicial)
+    return render(
+        request=request,
+        template_name='control_estudios/formulario_curso.html',
+        context={'formulario': formulario},
+    )
