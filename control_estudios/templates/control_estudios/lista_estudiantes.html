@@ -5,21 +5,23 @@
 {% endblock titulo %}
 
 {% block contenido %}
-<h1 style="color:orange;">
-  Bienvenidos, les saluda {{ profesor }}
-</h1>
-
 <h3>Alumnos inscritos:</h3>
-<ul>
-{% for estudiante in estudiantes %}
-  <li>
-    {{ estudiante.apellido }}, {{ estudiante.nombre }}
-    {% if estudiante.nota < 5 %}
-      REPROBADO
-    {% else %}
-      APROBADO
-    {% endif %}
-  </li>
-{% endfor %}
-</ul>
+<table class="table">
+  <tbody>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th></th>
+    </tr>
+    {% for estudiante in object_list %}
+    <tr>
+      <td>{{ estudiante.id }}</td>
+      <td>{{ estudiante.nombre }}</td>
+      <td>{{ estudiante.apellido }}</td>
+      <td></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
 {% endblock contenido %}

@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
+from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 from django.db.models import Q
 
 from control_estudios.forms import CursoFormulario
@@ -7,6 +8,7 @@ from control_estudios.models import Estudiante, Curso
 
 
 def listar_estudiantes(request):
+    # No usado
     contexto = {
         "profesor": "Pedro",
         "estudiantes": Estudiante.objects.all(),
@@ -145,3 +147,9 @@ def editar_curso(request, id):
         template_name='control_estudios/formulario_curso.html',
         context={'formulario': formulario},
     )
+
+
+# Vistas de estudiantes (basadas en clases)
+class EstudianteListView(ListView):
+    model = Estudiante
+    template_name = 'control_estudios/lista_estudiantes.html'
