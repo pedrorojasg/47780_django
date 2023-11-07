@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 from django.db.models import Q
 
@@ -153,3 +153,25 @@ def editar_curso(request, id):
 class EstudianteListView(ListView):
     model = Estudiante
     template_name = 'control_estudios/lista_estudiantes.html'
+
+
+class EstudianteCreateView(CreateView):
+    model = Estudiante
+    fields = ('apellido', 'nombre', 'email', 'dni')
+    success_url = reverse_lazy('lista_estudiantes')
+
+
+class EstudianteDetailView(DetailView):
+    model = Estudiante
+    success_url = reverse_lazy('lista_estudiantes')
+
+
+class EstudianteUpdateView(UpdateView):
+    model = Estudiante
+    fields = ('apellido', 'nombre', 'email', 'dni')
+    success_url = reverse_lazy('lista_estudiantes')
+
+
+class EstudianteDeleteView(DeleteView):
+    model = Estudiante
+    success_url = reverse_lazy('lista_estudiantes')

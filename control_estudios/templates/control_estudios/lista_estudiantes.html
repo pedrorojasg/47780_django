@@ -5,7 +5,10 @@
 {% endblock titulo %}
 
 {% block contenido %}
-<h3>Alumnos inscritos:</h3>
+<h3>Alumnos inscritos</h3>
+<a href="{% url 'crear_estudiante' %}">Crear estudiante</a>
+<br>
+
 <table class="table">
   <tbody>
     <tr>
@@ -13,13 +16,25 @@
       <th>Nombre</th>
       <th>Apellido</th>
       <th></th>
+      <th></th>
+      <th></th>
     </tr>
     {% for estudiante in object_list %}
     <tr>
       <td>{{ estudiante.id }}</td>
       <td>{{ estudiante.nombre }}</td>
       <td>{{ estudiante.apellido }}</td>
-      <td></td>
+      <td>
+        <a href="{% url 'ver_estudiante' estudiante.id %}">Ver</a>
+      </td>
+      <td>
+        <a href="{% url 'editar_estudiante' estudiante.id %}">Editar</a>
+      </td>
+      <td>
+        <a href="{% url 'eliminar_estudiante' estudiante.id %}">
+          <i class="bi bi-trash"></i>
+        </a>
+      </td>
     </tr>
     {% endfor %}
   </tbody>
