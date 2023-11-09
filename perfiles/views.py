@@ -38,7 +38,7 @@ def login_view(request):
             user = authenticate(username=usuario, password=password)
             # user puede ser un usuario o None
             if user:  # Chequeo usario existe
-                login(request=request, user=user)
+                login(request=request, user=user)  # creas la sesión al usuario
                 url_exitosa = reverse('inicio')
                 return redirect(url_exitosa)
     else:  # GET
@@ -48,3 +48,7 @@ def login_view(request):
         template_name='perfiles/login.html',
         context={'form': form},
     )
+
+
+class CustomLogoutView(LogoutView):
+    template_name = 'perfiles/logout.html'
