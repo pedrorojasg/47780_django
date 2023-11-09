@@ -26,4 +26,5 @@ username:admin
 contraseña:1234abcd
 
 # Usuarios normales
-??
+pedror
+cod3r47780
