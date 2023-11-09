@@ -24,6 +24,7 @@ from control_estudios.views import listar_estudiantes
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("estudios/", include("control_estudios.urls")),
+    path("perfiles/", include("perfiles.urls")),
 
     # Aqui agregar mis URLS
     # path(RUTA, VIEW)
