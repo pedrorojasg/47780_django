@@ -71,7 +71,7 @@ def crear_curso(request):
             nombre = data["nombre"]
             comision = data["comision"]
             # creo un curso en memoria RAM
-            curso = Curso(nombre=nombre, comision=comision)
+            curso = Curso(nombre=nombre, comision=comision, creador=request.user)
             # Lo guardan en la Base de datos
             curso.save()
 
@@ -164,6 +164,11 @@ class EstudianteCreateView(LoginRequiredMixin, CreateView):
     model = Estudiante
     fields = ('apellido', 'nombre', 'email', 'dni')
     success_url = reverse_lazy('lista_estudiantes')
+
+    # def form_valid(self, form):
+    #     """If the form is valid, save the associated model."""
+    #     self.object = form.save(creador=self.request.user)
+    #     return super().form_valid(form)
 
 
 class EstudianteDetailView(LoginRequiredMixin, DetailView):
