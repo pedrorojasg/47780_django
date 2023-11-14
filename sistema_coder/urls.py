@@ -16,6 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 
 from sistema_coder.views import saludar_con_html
 from control_estudios.views import listar_estudiantes
@@ -31,3 +33,6 @@ urlpatterns = [
     # La RUTA de la URL puede ser diferente al nombre de la view
     path("", saludar_con_html, name="inicio"),
 ]
+
+# Agregamos esto al final, para incluir los archivos media: imagenes, etc
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
